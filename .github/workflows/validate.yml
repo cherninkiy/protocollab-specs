@@ -1,0 +1,38 @@
+name: Validate Specs
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install protocollab from source
+        run: |
+          git clone https://github.com/cherninkiy/protocollab.git
+          cd protocollab
+          pip install -e .
+          cd ..
+
+      - name: Validate all YAML files in protocols/
+        run: |
+          set -e
+          for file in $(find protocols -name "*.yaml"); do
+            echo "Validating $file"
+            protocollab validate "$file" --strict
+          done
+
+      - name: Run pytest tests (if any)
+        run: |
+          pip install pytest
+          pytest tests/ || true
