@@ -4,32 +4,28 @@ meta:
   description: "Simple ICMP Echo Request/Reply protocol used by the ping utility to test host reachability."
   endian: be
   version: "1.0.0"
-  status: stable
 
-fields:
-  - name: type
+seq:
+  - id: type
     type: uint8
-    description: "ICMP message type (8 = Echo Request, 0 = Echo Reply)"
-    valid_values: [0, 8]
+    doc: "ICMP message type (8 = Echo Request, 0 = Echo Reply)"
 
-  - name: code
+  - id: code
     type: uint8
-    description: "ICMP subtype (always 0 for Echo Request/Reply)"
-    valid_values: [0]
+    doc: "ICMP subtype (always 0 for Echo Request/Reply)"
 
-  - name: checksum
+  - id: checksum
     type: uint16
-    description: "One's complement checksum of the ICMP message"
+    doc: "One's complement checksum of the ICMP message"
 
-  - name: identifier
+  - id: identifier
     type: uint16
-    description: "Identifier to match Echo Requests with Echo Replies"
+    doc: "Identifier to match Echo Requests with Echo Replies"
 
-  - name: sequence_number
+  - id: sequence_number
     type: uint16
-    description: "Sequence number incremented with each Echo Request"
+    doc: "Sequence number incremented with each Echo Request"
 
-  - name: payload
+  - id: payload
     type: bytes
-    description: "Optional arbitrary data echoed back by the responder"
-    optional: true
+    doc: "Optional arbitrary data echoed back by the responder"

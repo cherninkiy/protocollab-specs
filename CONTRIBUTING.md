@@ -43,7 +43,11 @@ Thank you for considering contributing! This repository follows the same Code of
     description: "Purpose of the protocol"
     endian: le|be
     version: "1.0.0" # optional but recommended
-    status: draft|stable|deprecated
+
+  seq:
+    - id: field_name
+      type: u1   # e.g. u1, u2, u4, uint8, uint16, bytes …
+      doc: "Field description"
   ```
 - Avoid including any confidential or proprietary information. All specs become public under Apache 2.0.
 

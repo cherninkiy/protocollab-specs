@@ -8,52 +8,44 @@ meta:
     (PTYPE=0x0800), giving HLEN=6 and PLEN=4.
   endian: be
   version: "1.0.0"
-  status: stable
-  references:
-    - "RFC 826 – An Ethernet Address Resolution Protocol"
 
-fields:
-  - name: htype
+seq:
+  - id: htype
     type: uint16
-    description: "Hardware type (HTYPE). 1 = Ethernet."
-    valid_values: [1]
+    doc: "Hardware type (HTYPE). 1 = Ethernet."
 
-  - name: ptype
+  - id: ptype
     type: uint16
-    description: "Protocol type (PTYPE). 0x0800 = IPv4."
-    valid_values: [0x0800]
+    doc: "Protocol type (PTYPE). 0x0800 = IPv4."
 
-  - name: hlen
+  - id: hlen
     type: uint8
-    description: "Hardware address length in bytes (HLEN). 6 for Ethernet MAC."
-    valid_values: [6]
+    doc: "Hardware address length in bytes (HLEN). 6 for Ethernet MAC."
 
-  - name: plen
+  - id: plen
     type: uint8
-    description: "Protocol address length in bytes (PLEN). 4 for IPv4."
-    valid_values: [4]
+    doc: "Protocol address length in bytes (PLEN). 4 for IPv4."
 
-  - name: oper
+  - id: oper
     type: uint16
-    description: "Operation code (OPER). 1 = ARP Request, 2 = ARP Reply."
-    valid_values: [1, 2]
+    doc: "Operation code (OPER). 1 = ARP Request, 2 = ARP Reply."
 
-  - name: sha
+  - id: sha
     type: bytes
     size: 6
-    description: "Sender hardware address (SHA) – MAC address of the sender."
+    doc: "Sender hardware address (SHA) – MAC address of the sender."
 
-  - name: spa
+  - id: spa
     type: bytes
     size: 4
-    description: "Sender protocol address (SPA) – IPv4 address of the sender."
+    doc: "Sender protocol address (SPA) – IPv4 address of the sender."
 
-  - name: tha
+  - id: tha
     type: bytes
     size: 6
-    description: "Target hardware address (THA) – MAC address of the target (all zeros in a Request)."
+    doc: "Target hardware address (THA) – MAC address of the target (all zeros in a Request)."
 
-  - name: tpa
+  - id: tpa
     type: bytes
     size: 4
-    description: "Target protocol address (TPA) – IPv4 address of the target."
+    doc: "Target protocol address (TPA) – IPv4 address of the target."
