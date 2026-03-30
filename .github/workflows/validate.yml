@@ -2,11 +2,9 @@ name: Validate Specs
 
 on:
   push:
-    branches:
-      - main
-      - copilot/current-model-selection
+    branches: [ main, dev ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, dev ]
 
 jobs:
   validate:
