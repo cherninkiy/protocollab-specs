@@ -1,0 +1,51 @@
+meta:
+  id: arp_protocol
+  title: "Address Resolution Protocol (ARP)"
+  description: >
+    ARP maps a network-layer address (e.g. IPv4) to a link-layer address
+    (e.g. Ethernet MAC). Defined in RFC 826. The fixed-size fields below
+    assume the most common case: Ethernet hardware (HTYPE=1) over IPv4
+    (PTYPE=0x0800), giving HLEN=6 and PLEN=4.
+  endian: be
+  version: "1.0.0"
+
+seq:
+  - id: htype
+    type: uint16
+    doc: "Hardware type (HTYPE). 1 = Ethernet."
+
+  - id: ptype
+    type: uint16
+    doc: "Protocol type (PTYPE). 0x0800 = IPv4."
+
+  - id: hlen
+    type: uint8
+    doc: "Hardware address length in bytes (HLEN). 6 for Ethernet MAC."
+
+  - id: plen
+    type: uint8
+    doc: "Protocol address length in bytes (PLEN). 4 for IPv4."
+
+  - id: oper
+    type: uint16
+    doc: "Operation code (OPER). 1 = ARP Request, 2 = ARP Reply."
+
+  - id: sha
+    type: bytes
+    size: 6
+    doc: "Sender hardware address (SHA) – MAC address of the sender."
+
+  - id: spa
+    type: bytes
+    size: 4
+    doc: "Sender protocol address (SPA) – IPv4 address of the sender."
+
+  - id: tha
+    type: bytes
+    size: 6
+    doc: "Target hardware address (THA) – MAC address of the target (all zeros in a Request)."
+
+  - id: tpa
+    type: bytes
+    size: 4
+    doc: "Target protocol address (TPA) – IPv4 address of the target."

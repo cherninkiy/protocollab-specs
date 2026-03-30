@@ -1,0 +1,31 @@
+meta:
+  id: ping_protocol
+  title: "ICMP Echo (Ping) Protocol"
+  description: "Simple ICMP Echo Request/Reply protocol used by the ping utility to test host reachability."
+  endian: be
+  version: "1.0.0"
+
+seq:
+  - id: type
+    type: uint8
+    doc: "ICMP message type (8 = Echo Request, 0 = Echo Reply)"
+
+  - id: code
+    type: uint8
+    doc: "ICMP subtype (always 0 for Echo Request/Reply)"
+
+  - id: checksum
+    type: uint16
+    doc: "One's complement checksum of the ICMP message"
+
+  - id: identifier
+    type: uint16
+    doc: "Identifier to match Echo Requests with Echo Replies"
+
+  - id: sequence_number
+    type: uint16
+    doc: "Sequence number incremented with each Echo Request"
+
+  - id: payload
+    type: bytes
+    doc: "Optional arbitrary data echoed back by the responder"
